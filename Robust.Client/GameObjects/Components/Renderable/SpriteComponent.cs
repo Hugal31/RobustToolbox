@@ -1164,11 +1164,13 @@ namespace Robust.Client.GameObjects
             {
                 var baseState = serializer.ReadDataField<string>("state", null);
                 var texturePath = serializer.ReadDataField<string>("texture", null);
+                var shaderName = serializer.ReadDataField<string>("shader", null);
 
                 if (baseState != null || texturePath != null)
                 {
                     layerData.Insert(0, new PrototypeLayerData
                     {
+                        Shader = string.IsNullOrWhiteSpace(shaderName) ? null : shaderName,
                         TexturePath = string.IsNullOrWhiteSpace(texturePath) ? null : texturePath,
                         State = string.IsNullOrWhiteSpace(baseState) ? null : baseState,
                         Color = Color.White,
